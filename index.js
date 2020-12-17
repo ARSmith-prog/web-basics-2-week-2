@@ -132,32 +132,29 @@ htmlTarget2.innerHTML = answer2
 //each time the player fails. Fail_numbers, is an array of numbers that stores the fail numbers the player has used
 //@return {string} win / gameOver => the string that says if the user wasted the 
 //three oportunities showing the fails numbers or the name if the player wins
-function getUser() {
+guessTheNumber  = () => {
 
   const playerName = prompt("What is your name?")
   console.log(playerName);
-
-  /*function smallGame() {*/
 
     var player = {
     name: playerName, 
     lives: 3,
     fail:[]
   };  
-while ( true ) {
   const dealer = Math.floor(Math.random() * 40) + 10;
   console.log(dealer);
   
 for (i = 1; i < 4; i++) {
   var playerguess = parseInt(prompt("Please guess a number between 10 and 50"));
 
-  if(playerguess == dealer) {
+  if(playerguess === dealer) {
      alert("Congrats" + playerName.toUpperCase() + "You guessed correctly");
-     return player;
+     return ("Congrats" + playerName.toUpperCase() + "You guessed correctly");
     break; }
     else {
        player.fail.push(playerguess);
-      player.lives--;
+       player.lives--;
        console.log(player);
        alert("you guessed wrong");
     }
@@ -165,15 +162,14 @@ for (i = 1; i < 4; i++) {
   if (player.lives===0) {
 alert("you lose");
     }
-    let answer = prompt("do you wish to play again y or n");
-     if ( answer != 'y'){
-       break;
-  }
   
- }
+  return (`${player.name} loses. Fail numbers were ${player.fail}`);
 }
-getUser();
 
+const answer3 = guessTheNumber()
+
+const htmlTarget3 = document.getElementById('a-3')
+htmlTarget3.innerHTML = answer3
 
 
 
@@ -182,7 +178,7 @@ getUser();
 // The second one sorting the array of objects based on the author property, the third one based on the library property. finally, the return value has to be the string sorted of the property selected separeted with a semicolon. Remember you have to sort all of the array based on the selected property
 //example: if the user select sorting by title the return value must be: "Mockingjay: The Final Book of The Hunger Games; Walter Isaacson; The Road Ahead"
 
-/*sort = () => {
+sort = () => {
 
   var library = [
    {
@@ -202,56 +198,75 @@ getUser();
    }];
 
 
-let sortBy = prompt( "We have a libry of books each book has title, author, and libray ID Information \n would you like this to be sorted by title author name or book id?")
+let sortBy = prompt( "We have a libary of books each book has title, author, and libray ID Information \n would you like this to be sorted by title author name or book id?");
 
-let titleArray = [];
 
-for (i =0; i < library.length; i++) {
-if (sortBy == "title") {
+  if (sortBy == "title") {
 
-let item = library[i].title;
-titleArray.push(item);
+    library.sort(function(a,b) 
+{
+  //return b.title.length - a.title.length;  
+  // alphorder 
+
+  const bupper = b.title.toUpperCase();
+  const aupper = a.title.toUpperCase();
+
+  if (bupper > aupper) {
+    return 1; 
+  } else if (aupper > bupper) {
+    return -1; 
+  }else {
+    return 0; 
+  }
+})
+
+const titleArray = [];
+
+for(i = 0; i < library.length; i++) {
+  titleArray.push(library[i].title);      //pushing the titles in order into the title array
+}
+
+return titleArray.join(";"); //tells to join the titles with semi colons 
 
 } else if (sortBy == "author") {
-
-  item = library[i].author;
-  authorArray.push(item);
-
-
-} else if (sortBy == "libraryid"){
-  item = library[i].libraryID;
-  idArray.push(item);
-}
-else{
-  alert(" you have entered an invalid entry")
-}
-
-  /*console.log("before the loop:  ", titleArray)
-  let item = library[i].title;
-  console.log(item);
-  titleArray.push(item);
-  console.log("after for loop: ", titleArray)
-}*/
-
-/*
-titleArray.sort(function(a,b) 
+  library.sort(function(a,b) 
 {
-  return b.length - a.length
+  return b.author.length - a.author.length;
 
 })
 
-console.log
+const authorArray = [];
 
+for(i = 0; i < library.length; i++) {
+  authorArray.push(library[i].author);      //pushing the titles in order into the title array
+}
 
+return authorArray.join(";"); //tells to join the titles with semi colons 
 
- console.log("after sorting", titleArray);
+  
+} else if (sortBy == "libraryid"){
 
+  library.sort(function(a,b) 
+  {
+    return b.libraryID - a.libraryID;
+  })
+  
+  const libraryidArray = [];
+  
+  for(i = 0; i < library.length; i++) {
+    libraryidArray.push(library[i].libraryID);      //pushing the titles in order into the title array
+  }
+  
+  return libraryidArray.join(";"); //tells to join the titles with semi colons 
 
-  return 
+}
+else{
+  alert(" you have entered an invalid entry");
+}
+return ("you have entered an invalid entry");
 }
 
 const answer4 = sort()
 
 const htmlTarget4 = document.getElementById('a-4')
 htmlTarget4.innerHTML = answer4
-*/
