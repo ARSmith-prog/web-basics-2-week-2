@@ -164,10 +164,12 @@ let sortBy = prompt( "We have a libary of books each book has title, author, and
 
     library.sort(function(a,b) 
 {
-  //return b.title.length - a.title.length;  
-  // alphorder 
+  return b.title.length - a.title.length;  
+  
+  
+  // alphorder (just soemthing random. disregard for the assignment)
 
-  const bupper = b.title.toUpperCase();
+  /*const bupper = b.title.toUpperCase();
   const aupper = a.title.toUpperCase();
 
   if (bupper > aupper) {
@@ -176,7 +178,7 @@ let sortBy = prompt( "We have a libary of books each book has title, author, and
     return -1; 
   }else {
     return 0; 
-  }
+  }*/
 })
 
 const titleArray = [];
