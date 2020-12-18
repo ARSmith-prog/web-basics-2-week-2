@@ -33,91 +33,50 @@ htmlTarget.innerHTML = answer1
 //------------------------ Question 2 ---------------------------
 // Write a function that recieves a string as a parameter and evaluate each character of the string to determinate if the character is vowel or a consonant. you have to store each character on separates arrays, one for vowels and the other one for consonants.
 // after separating the characters concatenate both arrays. ask the user if wants the vowels first or consonants first in the final array.
-//hint:
+//hint
 
 //@param {string}
 //@return {character} => array of characters
 
-/*
-vowelOrConsonant = ('string') => {
-  const characters = string.split('');
-  const vowel= [];
-  const consonants = [];
 
-  const userInput = 'vowels';
 
-  for (let i=0; i < characters.length; i++) {
-if (characters[i] === 'a') {
-vowels.push(characters[i])
-} else if (characters[i] === 'e'){
-  vowels.push(characters[i])
-}
-else if (characters[i] === 'i'){
-vowels.push(characters[i])
-  }
-else if (characters[i] === 'o'){
-vowels.push(characters[i])
-}
-else if (characters[i] === 'u') {
-vowels.push(characters[i])
-  }
-  else {
-    consonants.push(characters[i])
-  }
+vowelOrConsonant = (string) => {
 
-  return results
+  let input = prompt("enter a word");
 
-  vowelOrConsonant = () => {
-    let userInput = prompt("Please enter a string: ");
-    let vowels = [];
-    let consonants = [];
+  let vowels = [];   //create arrays
+  let consonants = [];
   
-      for (i = 0; i < userInput.length; i++) {
-    let characters;
-  
-    if (characters[i] === 'a'|| characters[i] === 'e' || characters[i] === 'i' || characters[i] === 'o'|| characters[i] === 'u') {
-      vowels.push(characters[i])
-    }
-  
-    else {
-      consonants.push(characterToAssess);
-    }
-  
+  for ( i = 0; i < input.length; i ++) {
+
+    if (input[i] === 'a' || input[i] === 'e' || input[i] === 'i' || input[i] === 'o' || input[i] === 'u') {
+      vowels.push(input[i]);
+      } else {
+        consonants.push(input[i]);
       }
-    console.log("Our final vowel array is: ");
-    console.log("Our final constanant array is: ");
-  
-    let userRequest = prompt(
-      "Do you want your vowels or consonants first?  Type 'vowels' for vowels first, or 'consonants' for consonants first."
-    );
-  
-    let reply;
-  
+    }
+
+  let userRequest = prompt("would you like the vowels first or consonants first?");
+
+  let reply; // declare reply
+
     if (userRequest == "vowels") {
-      reply = vowels.concat(consonants);
+      reply = vowels.concat(consonants); 
     } else {
       reply = consonants.concat(vowels);
     }
-    console.log(reply);
-  
-  }
-  
-  vowelOrConsonant();
-
-  console.log(vowels)
-  console.log(consonants)
-  console.log(vowels.concat(consonants))
-
-  return vowels.concat(consonants)
+    return reply;
 }
+vowelOrConsonant();
 
-/*const answer2 = vowelOrConsonant()
+
+const answer2 = vowelOrConsonant()
 
 
 const htmlTarget2 = document.getElementById('a-2')
 htmlTarget2.innerHTML = answer2
 
-*/
+
 
 
 //------------------------ Question 3 ---------------------------
